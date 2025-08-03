@@ -1,4 +1,4 @@
-Hydro-elastic Model for Bandgap Analysis
+Description
 This repository contains the MATLAB source code for the bandgap calculation using hydro-elastic model.
 
 Citation
