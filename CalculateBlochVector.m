@@ -1,0 +1,16 @@
+function [kx_vector,ky_vector] = CalculateBlochVector(node,Type)
+x_max = max(node(:,2)); 
+y_max = max(node(:,3));
+switch Type
+    case 'symmetric'
+        kx_vector = [0.1,pi/(x_max*20):pi/(x_max*20):pi/(x_max),ones(1,20)*pi/(x_max),19*pi/(20*x_max):-pi/(x_max*20):pi/(x_max*20),0.1];  % bloch vector in x direction
+        ky_vector = [0.1,(zeros(1,20)),pi/(y_max*20):pi/(y_max*20):pi/(y_max),19*pi/(20*y_max):-pi/(y_max*20):pi/(y_max*20),0.1];  % bloch vector in y direction
+    case 'chiral'
+        kx_vector = [pi/(x_max*20):pi/(x_max*20):pi/(x_max),ones(1,20)*pi/(x_max),...
+            19*pi/(20*x_max):-pi/(x_max*20):pi/(x_max*20),...
+            (zeros(1,20)),pi/(x_max*20):pi/(x_max*20):pi/(x_max)];  % bloch vector in x direction
+        ky_vector = [(zeros(1,20)),pi/(y_max*20):pi/(y_max*20):pi/(y_max),...
+            19*pi/(20*y_max):-pi/(y_max*20):pi/(y_max*20),...
+            pi/(y_max*20):pi/(y_max*20):pi/(y_max),...
+            ones(1,20)*pi/(y_max)];  % bloch vector in y direction
+end
